@@ -4,8 +4,10 @@ BYUI CSE210 W1 Prove
 Tic-Tac-Toe
 '''
 
+# Import Random picks numbers randomly
 import random  
 
+#Runs the game mechanics
 def main():
     print("Tic-Tac-Toe")
     law = ""
@@ -32,6 +34,7 @@ def main():
     print("Its a draw ,Both Players Win.")
     play_again()
 
+#Winning Plater condition checker
 def winner(player,table_data,game_over):
     if table_data[0] == table_data[1] == table_data[2]:
         print(f"{player.capitalize()} won, {game_over} ")
@@ -64,7 +67,8 @@ def winner(player,table_data,game_over):
     elif table_data[2] == table_data[4] == table_data[6]:
         print(f"{player.capitalize()} won, {game_over} ")
         play_again()
-        
+ 
+#Draws table to the screen       
 def table(table_data):
     print("-------------")
     print("|", table_data[0], "|", table_data[1], "|", table_data[2], "|",)
@@ -74,6 +78,7 @@ def table(table_data):
     print("|", table_data[6], "|", table_data[7], "|", table_data[8], "|",)
     print("-------------")
 
+#Randomly Picks a player at start
 def players_start(player, table_data):
     if player == "x" or player == "o":
         loop = ''
@@ -87,6 +92,7 @@ def players_start(player, table_data):
                 return (table(table_data))
                 #loop = False
 
+#Takes input with validation from the chosen player
 def get_inp(player, table_data):
     loop_num = ""
     while loop_num != True:
@@ -104,12 +110,14 @@ def get_inp(player, table_data):
             print("Try Again.")
             loop_num = False
 
+#Picks the next player inregards to the ramdomly picked player
 def next_player_turn(randomiser):
     if randomiser == "" or randomiser == "o":
         return "x"
     elif randomiser == "x":
         return "o"
 
+#Game over text
 def game_over():
     greet = ["Fatality.",
              "Every winner has their day.",
@@ -121,6 +129,7 @@ def game_over():
     won = random.choice(greet)
     return won
 
+#End Game options
 def play_again():
     play_again = input("Want to play again ? Reply Y for yes / N or Enter Key for No : ")
     if play_again.lower() == "y":
